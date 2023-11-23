@@ -16,7 +16,6 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.text}>Open up App.js to start working on your app!</Text>
       <StatusBar style="black" />
-        <HomeScreen />
     </View>
   );
 }
