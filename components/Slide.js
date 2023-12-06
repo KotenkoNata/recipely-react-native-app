@@ -1,10 +1,13 @@
-import {View} from "react-native";
-import {center} from "@shopify/react-native-skia";
-import imageSvg from './svg-image/svg-image'
+import {Button, Text, View} from "react-native";
+import Picture from '../components/svg-image/svg-image';
+
 
 const Slide = ({item}) => {
     return <View style={{alignItems: 'center'}}>
-        <imageSvg />
+        <Picture></Picture>
+        <Text>{item.title}</Text>
+        <Text>{item.subtitle}</Text>
+        <Button title={item.buttonName} />
     </View>
 }
 
