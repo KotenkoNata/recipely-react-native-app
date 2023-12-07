@@ -1,20 +1,24 @@
-import {Button, Text, View,StyleSheet} from "react-native";
-import Picture from '../components/svg-image/svg-image';
+import {Text, View, StyleSheet, Image} from "react-native";
+
 import SkipButton from "./SkipButton";
+import OnBoardingButton from "./OnBoardingButton";
 
 
 
 const Slide = ({item}) => {
     return <View style={styles.container}>
-                <View style={{flex: 3, justifyContent: 'center'}}>
+                <View style={{flex: 6, paddingTop: 50}}>
                     <SkipButton name={'Skip'}/>
-                    <Picture></Picture>
+                    <Image source={item.image} />
                 </View>
 
                 <View style={styles.textPartContainer}>
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.description}>{item.subtitle}</Text>
-                    <Button title={item.buttonName} />
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <OnBoardingButton name={'Next'}/>
+                    </View>
+
                 </View>
     </View>
 }
@@ -23,15 +27,12 @@ export default Slide;
 
 const styles = StyleSheet.create({
     container: {
-        padding: 10,
         backgroundColor: '#70b9be',
     },
     textPartContainer: {
         backgroundColor: 'white',
-        padding: 30,
-        justifyContent: "center",
-        alignItems: 'center',
-        flex: 1
+        flex: 3,
+        paddingTop: 30,
     },
     title: {
         fontSize: 26,
@@ -44,8 +45,8 @@ const styles = StyleSheet.create({
         color: "#97a2b0",
         fontSize: 20,
         lineHeight: 25,
-        width: '70%',
         textAlign: 'center',
+        marginBottom: 40,
     }
 
 })
