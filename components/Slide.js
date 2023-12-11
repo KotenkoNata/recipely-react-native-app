@@ -1,24 +1,28 @@
-import {Text, View, StyleSheet, Image} from "react-native";
+import {Text, View, StyleSheet, Image, Dimensions} from "react-native";
 
 import SkipButton from "./SkipButton";
 import OnBoardingButton from "./OnBoardingButton";
+import {COLORS, width} from "../constants/theme";
+import {Roboto_500Medium} from "@expo-google-fonts/roboto";
 
 
 
 const Slide = ({item}) => {
+
     return <View style={styles.container}>
-                <View style={{flex: 6, paddingTop: 50}}>
-                    <SkipButton name={'Skip'}/>
-                    <Image source={item.image} />
+                <View style={styles.topPartContainer}>
+                    <SkipButton style={styles.skipButton} name={'Skip'}/>
+                    <Image style={styles.imageStyles}
+                           resizeMode={"contain"}
+                           source={item.image} />
                 </View>
 
-                <View style={styles.textPartContainer}>
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.description}>{item.subtitle}</Text>
-                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={styles.bottomPartContainer}>
+                    <Text style={styles.titleOnBoardCard}>{item.title}</Text>
+                    <Text style={styles.descriptionOnBoardCard} adjustsFontSizeToFit={true}>{item.subtitle}</Text>
+                    <View style={styles.buttonContainer}>
                         <OnBoardingButton name={'Next'}/>
                     </View>
-
                 </View>
     </View>
 }
@@ -27,26 +31,55 @@ export default Slide;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#70b9be',
+        alignItems: 'center',
+        backgroundColor: COLORS.lightBackground,
+        flex: 1,
+        padding: 15,
+        paddingBottom: 0
     },
-    textPartContainer: {
-        backgroundColor: 'white',
+    topPartContainer: {
+        backgroundColor: COLORS.lightBackground,
         flex: 3,
-        paddingTop: 30,
     },
-    title: {
-        fontSize: 26,
-        color: "#020319",
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 20,
-    },
-    description: {
-        color: "#97a2b0",
-        fontSize: 20,
-        lineHeight: 25,
-        textAlign: 'center',
-        marginBottom: 40,
-    }
+    skipButton:{
 
+    },
+    imageStyles: {
+        width: width-30,
+        height: 400,
+        marginTop: 60,
+    },
+    bottomPartContainer: {
+        backgroundColor: COLORS.white,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: width-30,
+        paddingLeft: 20,
+        paddingRight: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        paddingBottom: 10,
+    },
+    titleOnBoardCard: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: COLORS.black,
+        marginTop: 20,
+        fontFamily: 'Roboto_500Medium',
+        marginBottom: 15,
+    },
+    descriptionOnBoardCard: {
+        textAlign: 'center',
+        color: COLORS.gray,
+        fontSize: 18,
+        lineHeight: 30
+    },
+    buttonContainer: {
+        position: 'relative',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: width - 60,
+    },
 })

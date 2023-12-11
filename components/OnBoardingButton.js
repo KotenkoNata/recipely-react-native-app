@@ -1,4 +1,5 @@
 import {Pressable, StyleSheet, Text} from "react-native";
+import {COLORS} from "../constants/theme";
 
 const OnBoardingButton = ({name}) =>{
     return <Pressable style={styles.button}>
@@ -10,12 +11,11 @@ export default OnBoardingButton;
 
 const styles=StyleSheet.create({
     button: {
-        backgroundColor: "#042628",
+        backgroundColor: COLORS.black,
         marginTop: 40,
-        marginRight: 30,
         borderRadius: 14,
         padding: 15,
-        width: "75%",
+        width: '100%'
     },
     text: {
         fontSize: 20,

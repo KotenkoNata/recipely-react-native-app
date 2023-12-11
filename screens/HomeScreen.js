@@ -1,6 +1,6 @@
 import {StyleSheet, View, Dimensions} from "react-native";
 import Svg, {Path} from "react-native-svg";
-import A from '../components/svg-image/svg-image';
+import {COLORS} from "../constants/theme";
 
 function HomeScreen() {
     return (
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#70B9BE',
+        backgroundColor: COLORS.lightBackground,
     },
     topLine: {
       position: "absolute",

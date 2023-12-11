@@ -1,15 +1,14 @@
-import {Dimensions, FlatList, SafeAreaView,StyleSheet} from "react-native";
+import {FlatList, SafeAreaView,StyleSheet} from "react-native";
 import OnboardingData from "../data/onboarding-data";
 import Slide from "../components/Slide";
+import {COLORS, height} from "../constants/theme";
 
 const OnboardingScreen = ({navigation}) => {
-    const {width, height} = Dimensions.get('window');
 
     return (
         <SafeAreaView style={styles.container}>
-            <FlatList pagingEnabled
-                      horizontal
-                        data={OnboardingData}
+            <FlatList data={OnboardingData}
+                      horizontal={true}
                       renderItem={({item})=><Slide item={item}/>}
             />
         </SafeAreaView>
