@@ -1,20 +1,24 @@
-import {Text, View, StyleSheet, Image, Dimensions} from "react-native";
+import {Text, View, StyleSheet, Image} from "react-native";
 
 import SkipButton from "./SkipButton";
 import OnBoardingButton from "./OnBoardingButton";
 import {COLORS, width} from "../constants/theme";
-import {Roboto_500Medium} from "@expo-google-fonts/roboto";
+import Slider from "./Slider";
 
 
 
 const Slide = ({item}) => {
+     function handleSkipPress() {
+
+     }
 
     return <View style={styles.container}>
                 <View style={styles.topPartContainer}>
-                    <SkipButton style={styles.skipButton} name={'Skip'}/>
+                    <SkipButton style={styles.skipButton} name={'Skip'} onPress={handleSkipPress}/>
                     <Image style={styles.imageStyles}
                            resizeMode={"contain"}
                            source={item.image} />
+                    <Slider />
                 </View>
 
                 <View style={styles.bottomPartContainer}>

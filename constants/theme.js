@@ -7,4 +7,5 @@ export const COLORS = {
     black: '#040319',
     gray: '#97a2b0',
     white: '#FFFFFF',
+    lightBlue: '#a9d5d8'
 }
