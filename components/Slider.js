@@ -8,8 +8,8 @@ const Slider = () => {
     const [currentSlideIndex, setCurrentIndex] = useState(0);
 
     return (
-        <View style={{height: height*0.5, justifyContent: 'space-between', paddingHorizontal: 20}}>
-            <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 70}}>
+        <View style={styles.sliderContainer}>
+            <View style={styles.sliderList}>
                 {OnboardingData.map((_,index)=>(
                     <View key={index} style={[styles.indicator, currentSlideIndex === index && {
                         backgroundColor: COLORS.white, width: 25
@@ -23,6 +23,16 @@ const Slider = () => {
 export default Slider;
 
 const styles = StyleSheet.create({
+    sliderContainer:{
+        height: height*0.5,
+        justifyContent: 'space-between',
+        paddingHorizontal: 20
+    },
+    sliderList:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 70
+    },
     indicator: {
         height: 10,
         width: 10,

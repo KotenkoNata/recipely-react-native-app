@@ -4,11 +4,14 @@ import {NavigationContainer} from '@react-navigation/native'
 import {StatusBar} from "expo-status-bar";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import OnboardingScreen from "./screens/OnboardingScreen";
+import {useState} from "react";
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+    const [showHomePage, setShowHomePage] = useState(false);
+
  let [fontsLoaded] = useFonts({
    Roboto_500Medium,
  })
