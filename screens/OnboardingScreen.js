@@ -4,10 +4,15 @@ import Slide from "../components/Slide";
 
 
 const OnboardingScreen = ({navigation}) => {
+    const updateCurrentSlideIndex = (e)=>{
+        const contentOffsetX = e.nativeEvent.contentOffset.x;
+        const currentIndex = Math.round(contentOffsetX/width);
+    }
 
     return (
         <SafeAreaView style={styles.container}>
             <FlatList data={OnboardingData}
+                      onMomentumScrollEnd={updateCurrentSlideIndex}
                       horizontal={true}
                       renderItem={({item})=><Slide item={item}/>}
             />

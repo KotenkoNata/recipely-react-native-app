@@ -1,8 +1,8 @@
 import {Pressable, Text,StyleSheet} from "react-native";
 
-const SkipButton = ({name}) => {
+const SkipButton = ({name, onPress}) => {
   return (
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={onPress}>
           <Text style={styles.text}>{name}</Text>
       </Pressable>
   )

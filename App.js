@@ -19,7 +19,7 @@ export default function App() {
   return (<>
       <StatusBar style={'light'}/>
       <NavigationContainer>
-          <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={OnboardingScreen}>
               <Stack.Screen name='OnboardingScreen' component={OnboardingScreen} />
               <Stack.Screen name='HomeScreen' component={HomeScreen} />
           </Stack.Navigator>

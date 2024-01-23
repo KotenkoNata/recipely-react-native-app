@@ -13,11 +13,11 @@ const onboardingData=[{
     buttonName: 'Next'
 },
     {
-        id: '3',
-        image: require('../assets/img/Onboarding3.png'),
-        title: `All recipe you need`,
-        subtitle: '5000+ healthy recipes made by people for your healthy life',
-        buttonName: 'Get Started'
+    id: '3',
+    image: require('../assets/img/Onboarding3.png'),
+    title: `All recipe you need`,
+    subtitle: '5000+ healthy recipes made by people for your healthy life',
+    buttonName: 'Get Started'
     }
 ];
 

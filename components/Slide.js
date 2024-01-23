@@ -1,10 +1,8 @@
 import {Text, View, StyleSheet, Image} from "react-native";
-
 import SkipButton from "./SkipButton";
 import OnBoardingButton from "./OnBoardingButton";
 import {COLORS, width} from "../constants/theme";
 import Slider from "./Slider";
-
 
 
 const Slide = ({item}) => {
@@ -63,7 +61,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
-        paddingBottom: 10,
+        paddingBottom: 25,
     },
     titleOnBoardCard: {
         textAlign: 'center',
