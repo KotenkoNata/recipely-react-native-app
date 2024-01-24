@@ -5,7 +5,7 @@ import {COLORS, width} from "../constants/theme";
 import Slider from "./Slider";
 
 
-const Slide = ({item}) => {
+const Slide = ({item, currentSlideIndex}) => {
      function handleSkipPress() {
 
      }
@@ -16,7 +16,7 @@ const Slide = ({item}) => {
                     <Image style={styles.imageStyles}
                            resizeMode={"contain"}
                            source={item.image} />
-                    <Slider />
+                    <Slider currentSlideIndex={currentSlideIndex}/>
                 </View>
 
                 <View style={styles.bottomPartContainer}>

@@ -1,11 +1,9 @@
 import {View, StyleSheet} from "react-native";
 import {COLORS, height} from "../constants/theme";
 import OnboardingData from "../data/onboarding-data";
-import {useState} from "react";
 
-const Slider = () => {
 
-    const [currentSlideIndex, setCurrentIndex] = useState(0);
+const Slider = ({currentSlideIndex}) => {
 
     return (
         <View style={styles.sliderContainer}>

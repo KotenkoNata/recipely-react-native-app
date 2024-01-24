@@ -1,13 +1,16 @@
 import {FlatList, SafeAreaView,StyleSheet} from "react-native";
 import OnboardingData from "../data/onboarding-data";
 import Slide from "../components/Slide";
-import {height} from "../constants/theme";
+import {height, width} from "../constants/theme";
+import {useState} from "react";
 
 
 const OnboardingScreen = ({navigation}) => {
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const updateCurrentSlideIndex = (e)=>{
         const contentOffsetX = e.nativeEvent.contentOffset.x;
-
+        const currentIndex = Math.round(contentOffsetX/width);
+        setCurrentSlideIndex(currentIndex);
     }
 
     return (
@@ -17,7 +20,7 @@ const OnboardingScreen = ({navigation}) => {
                       onMomentumScrollEnd={updateCurrentSlideIndex}
                       horizontal={true}
                       showsHorizontalScrollIndicator={false}
-                      renderItem={({item})=><Slide item={item}/>}
+                      renderItem={({item})=><Slide item={item} currentSlideIndex={currentSlideIndex}/>}
             />
         </SafeAreaView>
     )
