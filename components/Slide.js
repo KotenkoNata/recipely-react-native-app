@@ -5,10 +5,7 @@ import {COLORS, width} from "../constants/theme";
 import Slider from "./Slider";
 
 
-const Slide = ({item, currentSlideIndex, goNextSlide}) => {
-     function handleSkipPress() {
-
-     }
+const Slide = ({item, currentSlideIndex, goNextSlide, handleSkipPress}) => {
 
     return <View style={styles.container}>
                 <View style={styles.topPartContainer}>

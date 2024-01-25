@@ -4,6 +4,7 @@ import Slide from "../components/Slide";
 import {height, width} from "../constants/theme";
 import {useState} from "react";
 import React from "react";
+import slide from "../components/Slide";
 
 
 const OnboardingScreen = ({navigation}) => {
@@ -19,9 +20,18 @@ const OnboardingScreen = ({navigation}) => {
 
     const goNextSlide = () => {
         const nextSlideIndex = currentSlideIndex + 1;
-        const offset = nextSlideIndex*width;
+        if(nextSlideIndex !== OnboardingData.length){
+            const offset = nextSlideIndex*width;
+            ref?.current?.scrollToOffset({offset});
+            setCurrentSlideIndex(nextSlideIndex);
+        }
+    }
+
+    function handleSkipPress() {
+        const lastSlideIndex = OnboardingData.length -1;
+        const offset = lastSlideIndex*width;
         ref?.current?.scrollToOffset({offset});
-        setCurrentSlideIndex(nextSlideIndex);
+        setCurrentSlideIndex(lastSlideIndex);
     }
 
     return (
@@ -32,7 +42,10 @@ const OnboardingScreen = ({navigation}) => {
                       onMomentumScrollEnd={updateCurrentSlideIndex}
                       horizontal={true}
                       showsHorizontalScrollIndicator={false}
-                      renderItem={({item})=><Slide item={item} currentSlideIndex={currentSlideIndex} goNextSlide={goNextSlide}/>}
+                      renderItem={({item})=><Slide item={item}
+                                                   currentSlideIndex={currentSlideIndex}
+                                                   handleSkipPress={handleSkipPress}
+                                                   goNextSlide={goNextSlide}/>}
             />
         </SafeAreaView>
     )
