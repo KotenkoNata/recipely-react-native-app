@@ -5,7 +5,7 @@ import {COLORS, width} from "../constants/theme";
 import Slider from "./Slider";
 
 
-const Slide = ({item, currentSlideIndex}) => {
+const Slide = ({item, currentSlideIndex, goNextSlide}) => {
      function handleSkipPress() {
 
      }
@@ -23,7 +23,7 @@ const Slide = ({item, currentSlideIndex}) => {
                     <Text style={styles.titleOnBoardCard}>{item.title}</Text>
                     <Text style={styles.descriptionOnBoardCard} adjustsFontSizeToFit={true}>{item.subtitle}</Text>
                     <View style={styles.buttonContainer}>
-                        <OnBoardingButton name={'Next'}/>
+                        <OnBoardingButton name={'Next'} onPress={goNextSlide}/>
                     </View>
                 </View>
     </View>
