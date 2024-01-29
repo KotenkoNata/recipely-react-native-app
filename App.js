@@ -4,13 +4,27 @@ import {NavigationContainer} from '@react-navigation/native'
 import {StatusBar} from "expo-status-bar";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import OnboardingScreen from "./screens/OnboardingScreen";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-    const [showHomePage, setShowHomePage] = useState(false);
+    const [isAppFirstLaunched, setIsAppFirstLaunched] = useState(null);
+
+    useEffect( () => {
+        async function synchronize(){
+            const appData = await AsyncStorage.getItem('isAppFirstLaunched');
+            if(appData === null){
+                setIsAppFirstLaunched(true)
+                await AsyncStorage.setItem('isAppFirstLaunched', 'false');
+            }else{
+                setIsAppFirstLaunched(false)
+            }
+        }
+        synchronize();
+    }, []);
 
  let [fontsLoaded] = useFonts({
    Roboto_500Medium,
@@ -19,15 +33,20 @@ export default function App() {
         return null;
     }
 
-  return (<>
-      <StatusBar style={'light'}/>
-      <NavigationContainer>
-          <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={OnboardingScreen}>
-              <Stack.Screen name='OnboardingScreen' component={OnboardingScreen} />
-              <Stack.Screen name='HomeScreen' component={HomeScreen} />
-          </Stack.Navigator>
-      </NavigationContainer>
-      </>
+  return (
+      isAppFirstLaunched !== null && (
+          <>
+              <StatusBar style={'light'}/>
+              <NavigationContainer>
+                  <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={OnboardingScreen}>
+                      {isAppFirstLaunched && (
+                          <Stack.Screen name='OnboardingScreen' component={OnboardingScreen} />
+                      )}
+                      <Stack.Screen name='HomeScreen' component={HomeScreen} />
+                  </Stack.Navigator>
+              </NavigationContainer>
+          </>
+      )
   );
 }
 

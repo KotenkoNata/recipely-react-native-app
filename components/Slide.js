@@ -26,7 +26,7 @@ const Slide = ({item, currentSlideIndex, goNextSlide, handleSkipPress}) => {
                     <Text style={styles.descriptionOnBoardCard} adjustsFontSizeToFit={true}>{item.subtitle}</Text>
                     <View style={styles.buttonContainer}>
                         {currentSlideIndex === OnboardingData.length - 1
-                            ? <OnBoardingButton name={'Get Started'} onPress={()=>navigation.navigate('HomeScreen')}/>
+                            ? <OnBoardingButton name={'Get Started'} onPress={()=>navigation.replace('HomeScreen')}/>
                             : <OnBoardingButton name={'Next'} onPress={goNextSlide}/>}
                     </View>
                 </View>
