@@ -3,13 +3,18 @@ import SkipButton from "./SkipButton";
 import OnBoardingButton from "./OnBoardingButton";
 import {COLORS, width} from "../constants/theme";
 import Slider from "./Slider";
+import OnboardingData from "../data/onboarding-data";
+import {useNavigation} from "@react-navigation/native";
 
 
 const Slide = ({item, currentSlideIndex, goNextSlide, handleSkipPress}) => {
+    const navigation = useNavigation();
 
     return <View style={styles.container}>
                 <View style={styles.topPartContainer}>
-                    <SkipButton style={styles.skipButton} name={'Skip'} onPress={handleSkipPress}/>
+                    <SkipButton
+                                name={'Skip'}
+                                onPress={handleSkipPress}/>
                     <Image style={styles.imageStyles}
                            resizeMode={"contain"}
                            source={item.image} />
@@ -20,7 +25,9 @@ const Slide = ({item, currentSlideIndex, goNextSlide, handleSkipPress}) => {
                     <Text style={styles.titleOnBoardCard}>{item.title}</Text>
                     <Text style={styles.descriptionOnBoardCard} adjustsFontSizeToFit={true}>{item.subtitle}</Text>
                     <View style={styles.buttonContainer}>
-                        <OnBoardingButton name={'Next'} onPress={goNextSlide}/>
+                        {currentSlideIndex === OnboardingData.length - 1
+                            ? <OnBoardingButton name={'Get Started'} onPress={()=>navigation.navigate('HomeScreen')}/>
+                            : <OnBoardingButton name={'Next'} onPress={goNextSlide}/>}
                     </View>
                 </View>
     </View>
@@ -40,8 +47,9 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.lightBackground,
         flex: 3,
     },
-    skipButton:{
 
+    skipButtonHidden:{
+        display: 'none'
     },
     imageStyles: {
         width: width-30,
