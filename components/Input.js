@@ -1,18 +1,41 @@
 import {Text, View, StyleSheet, TextInput} from "react-native";
 import {COLORS} from "../constants/theme"
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import {useState} from "react";
 
 const Input = ({label, iconName, error, password, onFocus = () =>{}, ...props}) => {
+    const [isFocused, setIsFocused] = useState(false);
+    const [hidePassword, setHidePassword] = useState(password);
     return <View>
         <Text style={styles.inputLabel}>{label}</Text>
-        <View style={[styles.inputContainer]}>
+        <View style={[styles.inputContainer, {borderColor: error
+                ? 'red'
+                : isFocused
+                    ? COLORS.lightBlue
+                    : COLORS.grayBorders}]}>
             <Icon style={styles.inputIcon} name={iconName}></Icon>
             <TextInput autoCorrect={false}
+                       secureTextEntry={hidePassword}
                        onFocus={()=>{
                            onFocus();
+                           setIsFocused(true);
+                       }}
+                       onBlur={()=>{
+                           setIsFocused(false);
                        }}
                        style={styles.inputText} {...props} />
+            {password && (
+                <Icon
+                    onPress={()=>{
+                        setHidePassword(!hidePassword);
+                    }}
+                    style={styles.passwordIcon}
+                    name={hidePassword ? 'visibility' : 'visibility-off'}/>
+            )}
         </View>
+        {error && (
+            <Text style={styles.errorMessage}>{error}</Text>
+        )}
     </View>
 }
 
@@ -44,5 +67,14 @@ const styles = StyleSheet.create({
     inputText: {
         color: COLORS.placeholderGray,
         flex: 1,
+    },
+    errorMessage: {
+        color: 'red',
+        fontSize: 12,
+        marginTop: 7
+    },
+    passwordIcon:{
+        fontSize: 20,
+        color: COLORS.grayInput,
     }
 })

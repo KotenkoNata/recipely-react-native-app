@@ -19,7 +19,10 @@ function RegistrationScreen() {
                         <Input label='Full Name' iconName='person-outline' placeholder='Enter Name'/>
                         <Input label='Email Address' iconName='mail-outline' placeholder='Enter Email Address'/>
                         <Input label='Phone Number' iconName='phone' placeholder='Enter Phone number'/>
-                        <Input label='Password' iconName='lock-outline' placeholder='Enter Password'/>
+                        <Input label='Password'
+                               iconName='lock-outline'
+                               password
+                               placeholder='Enter Password'/>
                         <OnBoardingButton name={'Continue'} />
                     </View>
                 </ScrollView>
