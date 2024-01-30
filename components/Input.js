@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         borderWidth: 0.5,
         borderRadius: 15,
-        borderColor: COLORS.gray,
+        borderColor: COLORS.grayBorders,
         alignItems: 'center',
         marginBottom: 20,
     },
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     inputText: {
-        color: COLORS.gray,
+        color: COLORS.placeholderGray,
         flex: 1,
     }
 })
