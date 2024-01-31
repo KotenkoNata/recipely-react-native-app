@@ -1,10 +1,9 @@
 import {FlatList, SafeAreaView,StyleSheet} from "react-native";
 import OnboardingData from "../data/onboarding-data";
 import Slide from "../components/Slide";
-import {height, width} from "../constants/theme";
+import {width} from "../constants/theme";
 import {useState} from "react";
 import React from "react";
-import slide from "../components/Slide";
 
 
 const OnboardingScreen = ({navigation}) => {

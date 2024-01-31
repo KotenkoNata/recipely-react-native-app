@@ -1,10 +1,10 @@
-import {Pressable, StyleSheet, Text} from "react-native";
+import {Pressable, StyleSheet, Text, TouchableOpacity} from "react-native";
 import {COLORS} from "../constants/theme";
 
 const OnBoardingButton = ({name, onPress, addStyle}) =>{
-    return <Pressable style={[styles.button, addStyle]} onPress={onPress}>
+    return <TouchableOpacity activeOpacity={0.7} style={[styles.button, addStyle]} onPress={onPress}>
         <Text style={styles.text}>{name}</Text>
-    </Pressable>
+    </TouchableOpacity>
 }
 
 export default OnBoardingButton;

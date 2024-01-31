@@ -4,9 +4,21 @@ import {COLORS} from "../constants/theme";
 import {setStatusBarStyle} from "expo-status-bar";
 import OnBoardingButton from "../components/OnBoardingButton";
 import BackButton from "../components/BackButton";
+import {useState} from "react";
 
-function RegistrationScreen() {
+function RegistrationScreen({navigation}) {
     setStatusBarStyle('dark');
+    const [inputs, setInputs] = useState({
+        userName: '',
+        fullName: '',
+        email: '',
+        phone: '',
+        password: '',
+    });
+    const validate = ()=>{
+
+    }
+
     return (
         <>
             <SafeAreaView style={{backgroundColor: COLORS.white, flex: 1}}>
@@ -15,19 +27,19 @@ function RegistrationScreen() {
                     paddingHorizontal: 20
                 }}>
                     <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
-                        <BackButton iconName='arrow-back'/>
+                        <BackButton iconName='arrow-back' onPress={()=>navigation.navigate('LoginScreen')}/>
                         <Text style={styles.registerTitle}>Create Account</Text>
                     </View>
                     <View>
                         <Input label='User Name' iconName='person-outline' placeholder='User Name'/>
                         <Input label='Full Name' iconName='person-outline' placeholder='Enter Name'/>
                         <Input label='Email Address' iconName='mail-outline' placeholder='Enter Email Address'/>
-                        <Input label='Phone Number' iconName='phone' placeholder='Enter Phone number'/>
+                        <Input keyboardType='numeric' label='Phone Number' iconName='phone' placeholder='Enter Phone number'/>
                         <Input label='Password'
                                iconName='lock-outline'
                                password
                                placeholder='Enter Password'/>
-                        <OnBoardingButton name={'Continue'} addStyle={{marginTop: 15}}/>
+                        <OnBoardingButton name={'Continue'} addStyle={{marginTop: 15}} onPress={validate}/>
                         <Text style={styles.inputText}>By continuing, you agree to the</Text>
                         <Text style={[styles.inputTermsText]}>
                             Terms of Services & Privacy Policy
