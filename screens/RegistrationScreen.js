@@ -3,6 +3,7 @@ import Input from "../components/Input";
 import {COLORS} from "../constants/theme";
 import {setStatusBarStyle} from "expo-status-bar";
 import OnBoardingButton from "../components/OnBoardingButton";
+import BackButton from "../components/BackButton";
 
 function RegistrationScreen() {
     setStatusBarStyle('dark');
@@ -13,7 +14,10 @@ function RegistrationScreen() {
                     paddingTop: 50,
                     paddingHorizontal: 20
                 }}>
-                    <Text style={styles.registerTitle}>Create Account</Text>
+                    <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
+                        <BackButton iconName='arrow-back'/>
+                        <Text style={styles.registerTitle}>Create Account</Text>
+                    </View>
                     <View>
                         <Input label='User Name' iconName='person-outline' placeholder='User Name'/>
                         <Input label='Full Name' iconName='person-outline' placeholder='Enter Name'/>
@@ -43,8 +47,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto_500Medium',
         fontSize: 28,
         fontWeight: "600",
-        textAlign: 'center',
         marginBottom: 20,
+        flex: 3,
     },
     inputText: {
         textAlign: 'center',
