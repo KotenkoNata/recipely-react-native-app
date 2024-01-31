@@ -1,8 +1,8 @@
 import {Pressable, StyleSheet, Text} from "react-native";
 import {COLORS} from "../constants/theme";
 
-const OnBoardingButton = ({name, onPress}) =>{
-    return <Pressable style={styles.button} onPress={onPress}>
+const OnBoardingButton = ({name, onPress, addStyle}) =>{
+    return <Pressable style={[styles.button, addStyle]} onPress={onPress}>
         <Text style={styles.text}>{name}</Text>
     </Pressable>
 }

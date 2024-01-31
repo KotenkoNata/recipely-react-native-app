@@ -23,7 +23,11 @@ function RegistrationScreen() {
                                iconName='lock-outline'
                                password
                                placeholder='Enter Password'/>
-                        <OnBoardingButton name={'Continue'} />
+                        <OnBoardingButton name={'Continue'} addStyle={{marginTop: 15}}/>
+                        <Text style={styles.inputText}>By continuing, you agree to the</Text>
+                        <Text style={[styles.inputTermsText]}>
+                            Terms of Services & Privacy Policy
+                        </Text>
                     </View>
                 </ScrollView>
             </SafeAreaView>
@@ -41,5 +45,13 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         textAlign: 'center',
         marginBottom: 20,
+    },
+    inputText: {
+        textAlign: 'center',
+        marginTop: 20,
+    },
+    inputTermsText: {
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
 })
